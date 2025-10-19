@@ -16,8 +16,22 @@
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
+    "noEmit": true,
+    "experimentalDecorators": false,
   },
   "include": ["smart_contracts/**/*.ts"],
-  "exclude": ["node_modules", "dist", "coverage"]
+  "exclude": ["node_modules", "dist", "coverage"],
+  "algokit": {
+    "contracts": {
+      "trustai": {
+        "path": "smart_contracts/trustai/contract.algo.ts",
+        "name": "TrustAI",
+        "description": "TrustAI contract",
+        "author": "TrustAI",
+        "version": "1.0.0",
+        "license": "MIT"
+      }
+    }
+  },
+  "algokit.network": "testnet"
 }

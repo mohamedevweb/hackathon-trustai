@@ -1,0 +1,1048 @@
+{
+  "version": 3,
+  "sources": [
+    "C:/CataniaDev/projets/trustai/smart-contract/projects/smart-contract/smart_contracts/trustai/contract.algo.ts"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;AAGA;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;AAAA;;AAqBG;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AANA;;AAAA;AAAA;AAAA;;AAAA;AAfH;;;;AAAA;AAeG;;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AATA;;AAAA;AAAA;AAAA;;AAAA;AANH;;;AAAA;;;AAAA;;;AAAA;AAMG;;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;;AANH;;AAAA;;;AAAA;;AAAA;AAAA;AAAA;;AAME;;;AALA;;;;;;;;AAOE;;AAAA;AANF;AAOE;;AAAA;AANF;AAOE;;AAAA;AANF;AAOyB;AAAvB;AACO;;;;;;;;;;;;;;;;;;;;;;AAAP;AAGF;;;AAXA;AAaE;;AAAA;AACO;;AAAA;;;AAAY;;;;;;;;;;;;;;;;;;AAAnB;AAAsC;;;;;;;;;;;;;;;;;AAAtC;AAdF;AAAA;AAAA;AAAA;AAmBM;;;AAA8B;;;;;;;;;;;;;;;;;;;;;;;;;;AAAP;AAC3B;AAtBF;AAAA;AAAA;AAAA;AACA;AAAA;AAAA;AAAA;;;;;AAqBE;;;AAAA;;;AAAA;AACO;;;;;;;;;;;;;;;;;;;;;;;AAAP",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "@algorandfoundation/algorand-typescript/arc4/index.d.ts::Contract.approvalProgram",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 0 1"
+    },
+    "5": {
+      "op": "bytecblock 0x151f7c75 \"validated\" \"freelancer\" \"amount\""
+    },
+    "40": {
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "42": {
+      "op": "bz main_bare_routing@8",
+      "stack_out": []
+    },
+    "45": {
+      "op": "pushbytess 0xa13a3254 0x7be09440 0x113a88e4 // method \"fund_contract(address,address,uint64)string\", method \"validate_with_ai(bool)string\", method \"release_payment()string\"",
+      "defined_out": [
+        "Method(fund_contract(address,address,uint64)string)",
+        "Method(release_payment()string)",
+        "Method(validate_with_ai(bool)string)"
+      ],
+      "stack_out": [
+        "Method(fund_contract(address,address,uint64)string)",
+        "Method(validate_with_ai(bool)string)",
+        "Method(release_payment()string)"
+      ]
+    },
+    "62": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(fund_contract(address,address,uint64)string)",
+        "Method(release_payment()string)",
+        "Method(validate_with_ai(bool)string)",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "Method(fund_contract(address,address,uint64)string)",
+        "Method(validate_with_ai(bool)string)",
+        "Method(release_payment()string)",
+        "tmp%2#0"
+      ]
+    },
+    "65": {
+      "op": "match main_fund_contract_route@3 main_validate_with_ai_route@4 main_release_payment_route@5",
+      "stack_out": []
+    },
+    "73": {
+      "block": "main_after_if_else@12",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "74": {
+      "op": "return",
+      "stack_out": []
+    },
+    "75": {
+      "block": "main_release_payment_route@5",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%15#0"
+      ],
+      "stack_out": [
+        "tmp%15#0"
+      ]
+    },
+    "77": {
+      "op": "!",
+      "defined_out": [
+        "tmp%16#0"
+      ],
+      "stack_out": [
+        "tmp%16#0"
+      ]
+    },
+    "78": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "79": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%17#0"
+      ],
+      "stack_out": [
+        "tmp%17#0"
+      ]
+    },
+    "81": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "82": {
+      "callsub": "smart_contracts/trustai/contract.algo.ts::TrustAI.release_payment",
+      "op": "callsub release_payment",
+      "defined_out": [
+        "to_encode%2#0"
+      ],
+      "stack_out": [
+        "to_encode%2#0"
+      ]
+    },
+    "85": {
+      "op": "dup",
+      "defined_out": [
+        "to_encode%2#0",
+        "to_encode%2#0 (copy)"
+      ],
+      "stack_out": [
+        "to_encode%2#0",
+        "to_encode%2#0 (copy)"
+      ]
+    },
+    "86": {
+      "op": "len",
+      "defined_out": [
+        "length%2#0",
+        "to_encode%2#0"
+      ],
+      "stack_out": [
+        "to_encode%2#0",
+        "length%2#0"
+      ]
+    },
+    "87": {
+      "op": "itob",
+      "defined_out": [
+        "as_bytes%2#0",
+        "to_encode%2#0"
+      ],
+      "stack_out": [
+        "to_encode%2#0",
+        "as_bytes%2#0"
+      ]
+    },
+    "88": {
+      "op": "extract 6 2",
+      "defined_out": [
+        "length_uint16%2#0",
+        "to_encode%2#0"
+      ],
+      "stack_out": [
+        "to_encode%2#0",
+        "length_uint16%2#0"
+      ]
+    },
+    "91": {
+      "op": "swap",
+      "stack_out": [
+        "length_uint16%2#0",
+        "to_encode%2#0"
+      ]
+    },
+    "92": {
+      "op": "concat",
+      "defined_out": [
+        "encoded_value%2#0"
+      ],
+      "stack_out": [
+        "encoded_value%2#0"
+      ]
+    },
+    "93": {
+      "op": "bytec_0 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "encoded_value%2#0"
+      ],
+      "stack_out": [
+        "encoded_value%2#0",
+        "0x151f7c75"
+      ]
+    },
+    "94": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "encoded_value%2#0"
+      ]
+    },
+    "95": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%19#0"
+      ],
+      "stack_out": [
+        "tmp%19#0"
+      ]
+    },
+    "96": {
+      "op": "log",
+      "stack_out": []
+    },
+    "97": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "98": {
+      "op": "return",
+      "stack_out": []
+    },
+    "99": {
+      "block": "main_validate_with_ai_route@4",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%9#0"
+      ]
+    },
+    "101": {
+      "op": "!",
+      "defined_out": [
+        "tmp%10#0"
+      ],
+      "stack_out": [
+        "tmp%10#0"
+      ]
+    },
+    "102": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "103": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%11#0"
+      ],
+      "stack_out": [
+        "tmp%11#0"
+      ]
+    },
+    "105": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "106": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "reinterpret_bytes[1]%0#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[1]%0#0"
+      ]
+    },
+    "109": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0",
+        "reinterpret_bytes[1]%0#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[1]%0#0",
+        "0"
+      ]
+    },
+    "110": {
+      "op": "getbit",
+      "defined_out": [
+        "tmp%13#0"
+      ],
+      "stack_out": [
+        "tmp%13#0"
+      ]
+    },
+    "111": {
+      "callsub": "smart_contracts/trustai/contract.algo.ts::TrustAI.validate_with_ai",
+      "op": "callsub validate_with_ai",
+      "defined_out": [
+        "to_encode%1#0"
+      ],
+      "stack_out": [
+        "to_encode%1#0"
+      ]
+    },
+    "114": {
+      "op": "dup",
+      "defined_out": [
+        "to_encode%1#0",
+        "to_encode%1#0 (copy)"
+      ],
+      "stack_out": [
+        "to_encode%1#0",
+        "to_encode%1#0 (copy)"
+      ]
+    },
+    "115": {
+      "op": "len",
+      "defined_out": [
+        "length%1#0",
+        "to_encode%1#0"
+      ],
+      "stack_out": [
+        "to_encode%1#0",
+        "length%1#0"
+      ]
+    },
+    "116": {
+      "op": "itob",
+      "defined_out": [
+        "as_bytes%1#0",
+        "to_encode%1#0"
+      ],
+      "stack_out": [
+        "to_encode%1#0",
+        "as_bytes%1#0"
+      ]
+    },
+    "117": {
+      "op": "extract 6 2",
+      "defined_out": [
+        "length_uint16%1#0",
+        "to_encode%1#0"
+      ],
+      "stack_out": [
+        "to_encode%1#0",
+        "length_uint16%1#0"
+      ]
+    },
+    "120": {
+      "op": "swap",
+      "stack_out": [
+        "length_uint16%1#0",
+        "to_encode%1#0"
+      ]
+    },
+    "121": {
+      "op": "concat",
+      "defined_out": [
+        "encoded_value%1#0"
+      ],
+      "stack_out": [
+        "encoded_value%1#0"
+      ]
+    },
+    "122": {
+      "op": "bytec_0 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "encoded_value%1#0"
+      ],
+      "stack_out": [
+        "encoded_value%1#0",
+        "0x151f7c75"
+      ]
+    },
+    "123": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "encoded_value%1#0"
+      ]
+    },
+    "124": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%14#0"
+      ],
+      "stack_out": [
+        "tmp%14#0"
+      ]
+    },
+    "125": {
+      "op": "log",
+      "stack_out": []
+    },
+    "126": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "127": {
+      "op": "return",
+      "stack_out": []
+    },
+    "128": {
+      "block": "main_fund_contract_route@3",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "130": {
+      "op": "!",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "131": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "132": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "tmp%5#0"
+      ]
+    },
+    "134": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "135": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "reinterpret_bytes[32]%0#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[32]%0#0"
+      ]
+    },
+    "138": {
+      "op": "txna ApplicationArgs 2",
+      "defined_out": [
+        "reinterpret_bytes[32]%0#0",
+        "reinterpret_bytes[32]%1#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[32]%0#0",
+        "reinterpret_bytes[32]%1#0"
+      ]
+    },
+    "141": {
+      "op": "txna ApplicationArgs 3",
+      "defined_out": [
+        "reinterpret_bytes[32]%0#0",
+        "reinterpret_bytes[32]%1#0",
+        "reinterpret_bytes[8]%0#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[32]%0#0",
+        "reinterpret_bytes[32]%1#0",
+        "reinterpret_bytes[8]%0#0"
+      ]
+    },
+    "144": {
+      "op": "btoi",
+      "defined_out": [
+        "reinterpret_bytes[32]%0#0",
+        "reinterpret_bytes[32]%1#0",
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "reinterpret_bytes[32]%0#0",
+        "reinterpret_bytes[32]%1#0",
+        "tmp%7#0"
+      ]
+    },
+    "145": {
+      "callsub": "smart_contracts/trustai/contract.algo.ts::TrustAI.fund_contract",
+      "op": "callsub fund_contract",
+      "defined_out": [
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0"
+      ]
+    },
+    "148": {
+      "op": "dup",
+      "defined_out": [
+        "to_encode%0#0",
+        "to_encode%0#0 (copy)"
+      ],
+      "stack_out": [
+        "to_encode%0#0",
+        "to_encode%0#0 (copy)"
+      ]
+    },
+    "149": {
+      "op": "len",
+      "defined_out": [
+        "length%0#0",
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0",
+        "length%0#0"
+      ]
+    },
+    "150": {
+      "op": "itob",
+      "defined_out": [
+        "as_bytes%0#0",
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0",
+        "as_bytes%0#0"
+      ]
+    },
+    "151": {
+      "op": "extract 6 2",
+      "defined_out": [
+        "length_uint16%0#0",
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0",
+        "length_uint16%0#0"
+      ]
+    },
+    "154": {
+      "op": "swap",
+      "stack_out": [
+        "length_uint16%0#0",
+        "to_encode%0#0"
+      ]
+    },
+    "155": {
+      "op": "concat",
+      "defined_out": [
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0"
+      ]
+    },
+    "156": {
+      "op": "bytec_0 // 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "157": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "encoded_value%0#0"
+      ]
+    },
+    "158": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "159": {
+      "op": "log",
+      "stack_out": []
+    },
+    "160": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "161": {
+      "op": "return",
+      "stack_out": []
+    },
+    "162": {
+      "block": "main_bare_routing@8",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%20#0"
+      ],
+      "stack_out": [
+        "tmp%20#0"
+      ]
+    },
+    "164": {
+      "op": "bnz main_after_if_else@12",
+      "stack_out": []
+    },
+    "167": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%21#0"
+      ],
+      "stack_out": [
+        "tmp%21#0"
+      ]
+    },
+    "169": {
+      "op": "!",
+      "defined_out": [
+        "tmp%22#0"
+      ],
+      "stack_out": [
+        "tmp%22#0"
+      ]
+    },
+    "170": {
+      "error": "can only call when creating",
+      "op": "assert // can only call when creating",
+      "stack_out": []
+    },
+    "171": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "172": {
+      "op": "return",
+      "stack_out": []
+    },
+    "173": {
+      "subroutine": "smart_contracts/trustai/contract.algo.ts::TrustAI.fund_contract",
+      "params": {
+        "client#0": "bytes",
+        "freelancer#0": "bytes",
+        "amount#0": "uint64"
+      },
+      "block": "fund_contract",
+      "stack_in": [],
+      "op": "proto 3 1"
+    },
+    "176": {
+      "op": "pushbytes \"client\"",
+      "defined_out": [
+        "\"client\""
+      ],
+      "stack_out": [
+        "\"client\""
+      ]
+    },
+    "184": {
+      "op": "frame_dig -3",
+      "defined_out": [
+        "\"client\"",
+        "client#0 (copy)"
+      ],
+      "stack_out": [
+        "\"client\"",
+        "client#0 (copy)"
+      ]
+    },
+    "186": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "187": {
+      "op": "bytec_2 // \"freelancer\"",
+      "defined_out": [
+        "\"freelancer\""
+      ],
+      "stack_out": [
+        "\"freelancer\""
+      ]
+    },
+    "188": {
+      "op": "frame_dig -2",
+      "defined_out": [
+        "\"freelancer\"",
+        "freelancer#0 (copy)"
+      ],
+      "stack_out": [
+        "\"freelancer\"",
+        "freelancer#0 (copy)"
+      ]
+    },
+    "190": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "191": {
+      "op": "bytec_3 // \"amount\"",
+      "defined_out": [
+        "\"amount\""
+      ],
+      "stack_out": [
+        "\"amount\""
+      ]
+    },
+    "192": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "\"amount\"",
+        "amount#0 (copy)"
+      ],
+      "stack_out": [
+        "\"amount\"",
+        "amount#0 (copy)"
+      ]
+    },
+    "194": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "195": {
+      "op": "bytec_1 // \"validated\"",
+      "defined_out": [
+        "\"validated\""
+      ],
+      "stack_out": [
+        "\"validated\""
+      ]
+    },
+    "196": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "\"validated\"",
+        "0"
+      ],
+      "stack_out": [
+        "\"validated\"",
+        "0"
+      ]
+    },
+    "197": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "198": {
+      "op": "pushbytes \"Contract funded \\xf0\\x9f\\x92\\xb0\"",
+      "defined_out": [
+        "\"Contract funded \\xf0\\x9f\\x92\\xb0\""
+      ],
+      "stack_out": [
+        "\"Contract funded \\xf0\\x9f\\x92\\xb0\""
+      ]
+    },
+    "220": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "221": {
+      "subroutine": "smart_contracts/trustai/contract.algo.ts::TrustAI.validate_with_ai",
+      "params": {
+        "ai_result#0": "uint64"
+      },
+      "block": "validate_with_ai",
+      "stack_in": [],
+      "op": "proto 1 1"
+    },
+    "224": {
+      "op": "bytec_1 // \"validated\"",
+      "defined_out": [
+        "\"validated\""
+      ],
+      "stack_out": [
+        "\"validated\""
+      ]
+    },
+    "225": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "\"validated\"",
+        "ai_result#0 (copy)"
+      ],
+      "stack_out": [
+        "\"validated\"",
+        "ai_result#0 (copy)"
+      ]
+    },
+    "227": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "228": {
+      "op": "frame_dig -1",
+      "stack_out": [
+        "ai_result#0 (copy)"
+      ]
+    },
+    "230": {
+      "op": "bz validate_with_ai_ternary_false@2",
+      "stack_out": []
+    },
+    "233": {
+      "op": "pushbytes \"AI validated \\xe2\\x9c\\x85\"",
+      "defined_out": [
+        "ternary_result%0#0"
+      ],
+      "stack_out": [
+        "ternary_result%0#0"
+      ]
+    },
+    "251": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "252": {
+      "block": "validate_with_ai_ternary_false@2",
+      "stack_in": [],
+      "op": "pushbytes \"AI rejected \\xe2\\x9d\\x8c\"",
+      "defined_out": [
+        "ternary_result%0#0"
+      ],
+      "stack_out": [
+        "ternary_result%0#0"
+      ]
+    },
+    "269": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "270": {
+      "subroutine": "smart_contracts/trustai/contract.algo.ts::TrustAI.release_payment",
+      "params": {},
+      "block": "release_payment",
+      "stack_in": [],
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "271": {
+      "op": "bytec_1 // \"validated\"",
+      "defined_out": [
+        "\"validated\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"validated\""
+      ]
+    },
+    "272": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "273": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "274": {
+      "op": "bnz release_payment_after_if_else@2",
+      "stack_out": []
+    },
+    "277": {
+      "op": "pushbytes \"AI not validated yet \\xe2\\x9d\\x8c\"",
+      "defined_out": [
+        "\"AI not validated yet \\xe2\\x9d\\x8c\""
+      ],
+      "stack_out": [
+        "\"AI not validated yet \\xe2\\x9d\\x8c\""
+      ]
+    },
+    "303": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "304": {
+      "block": "release_payment_after_if_else@2",
+      "stack_in": [],
+      "op": "itxn_begin"
+    },
+    "305": {
+      "op": "intc_0 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "306": {
+      "op": "bytec_2 // \"freelancer\"",
+      "defined_out": [
+        "\"freelancer\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"freelancer\""
+      ]
+    },
+    "307": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%1#0",
+        "maybe_value%1#0"
+      ],
+      "stack_out": [
+        "maybe_value%1#0",
+        "maybe_exists%1#0"
+      ]
+    },
+    "308": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%1#0"
+      ]
+    },
+    "309": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "maybe_value%1#0",
+        "0"
+      ]
+    },
+    "310": {
+      "op": "bytec_3 // \"amount\"",
+      "defined_out": [
+        "\"amount\"",
+        "0",
+        "maybe_value%1#0"
+      ],
+      "stack_out": [
+        "maybe_value%1#0",
+        "0",
+        "\"amount\""
+      ]
+    },
+    "311": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%2#0",
+        "maybe_value%1#0",
+        "maybe_value%2#0"
+      ],
+      "stack_out": [
+        "maybe_value%1#0",
+        "maybe_value%2#0",
+        "maybe_exists%2#0"
+      ]
+    },
+    "312": {
+      "error": "check GlobalState exists",
+      "op": "assert // check GlobalState exists",
+      "stack_out": [
+        "maybe_value%1#0",
+        "maybe_value%2#0"
+      ]
+    },
+    "313": {
+      "op": "itxn_field Amount",
+      "stack_out": [
+        "maybe_value%1#0"
+      ]
+    },
+    "315": {
+      "op": "itxn_field Receiver",
+      "stack_out": []
+    },
+    "317": {
+      "op": "intc_1 // 1",
+      "defined_out": [
+        "1"
+      ],
+      "stack_out": [
+        "1"
+      ]
+    },
+    "318": {
+      "op": "itxn_field TypeEnum",
+      "stack_out": []
+    },
+    "320": {
+      "op": "intc_0 // 0",
+      "stack_out": [
+        "0"
+      ]
+    },
+    "321": {
+      "op": "itxn_field Fee",
+      "stack_out": []
+    },
+    "323": {
+      "op": "itxn_submit"
+    },
+    "324": {
+      "op": "pushbytes \"Payment released \\xf0\\x9f\\x92\\xb8\"",
+      "defined_out": [
+        "\"Payment released \\xf0\\x9f\\x92\\xb8\""
+      ],
+      "stack_out": [
+        "\"Payment released \\xf0\\x9f\\x92\\xb8\""
+      ]
+    },
+    "347": {
+      "retsub": true,
+      "op": "retsub"
+    }
+  }
+}
