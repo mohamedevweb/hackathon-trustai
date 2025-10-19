@@ -12,7 +12,7 @@ export type ContractRecord = {
   txId: string | null
 }
 
-const DB_PATH = resolve(process.cwd(), 'backend', 'contracts.json')
+const DB_PATH = resolve(process.cwd(), 'contracts.json')
 
 function ensureDbFile() {
   const dir = dirname(DB_PATH)

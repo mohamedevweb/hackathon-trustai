@@ -1,4 +1,6 @@
 import algosdk from 'algosdk'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 
 // Configure Algorand Testnet client
 export const algodClient = new algosdk.Algodv2('', 'https://testnet-api.algonode.cloud', '')
@@ -17,10 +19,10 @@ async function getParams() {
   return await algodClient.getTransactionParams().do()
 }
 
-function selector(method: string): Uint8Array {
-  // ARC-4 selector = first 4 bytes of SHA512/256(method_signature)
-  const hash = algosdk.makeSHA512_256(Buffer.from(method, 'utf8'))
-  return hash.slice(0, 4)
+function getAbiContract(): algosdk.ABIContract {
+  const specPath = resolve(process.cwd(), '..', 'smart-contract', 'projects', 'smart-contract', 'smart_contracts', 'artifacts', 'trustai', 'TrustAI.arc56.json')
+  const json = JSON.parse(readFileSync(specPath, 'utf-8'))
+  return new algosdk.ABIContract(json)
 }
 
 export async function fundContract(clientAddr: string, freelancerAddr: string, amount: number): Promise<{ txId: string }> {
@@ -28,25 +30,23 @@ export async function fundContract(clientAddr: string, freelancerAddr: string, a
   if (!APP_ID) throw new Error('Missing TRUSTAI_APP_ID')
 
   const params = await getParams()
-  const appArgs: Uint8Array[] = [
-    selector('fund_contract(address,address,uint64)'),
-    algosdk.decodeAddress(clientAddr).publicKey,
-    algosdk.decodeAddress(freelancerAddr).publicKey,
-    algosdk.encodeUint64(amount),
-  ]
+  const abi = getAbiContract()
+  const method = abi.getMethodByName('fund_contract')
 
-  // This MVP does not enforce escrow funding in the contract; you can optionally group a payment here
-  const txn = algosdk.makeApplicationNoOpTxnFromObject({
-    from: clientAccount.addr,
-    appIndex: APP_ID,
+  const signer = algosdk.makeBasicAccountTransactionSigner(clientAccount)
+  const atc = new algosdk.AtomicTransactionComposer()
+
+  atc.addMethodCall({
+    appID: APP_ID,
+    method,
+    methodArgs: [clientAddr, freelancerAddr, BigInt(amount)],
+    sender: clientAccount.addr,
     suggestedParams: params,
-    appArgs,
+    signer,
   })
 
-  const signed = txn.signTxn(clientAccount.sk)
-  const { txId } = await algodClient.sendRawTransaction(signed).do()
-  await algosdk.waitForConfirmation(algodClient, txId, 4)
-  return { txId }
+  const res = await atc.execute(algodClient, 4)
+  return { txId: res.txIDs[0] }
 }
 
 export async function validateWithAI(result: boolean): Promise<{ txId: string }> {
@@ -54,22 +54,23 @@ export async function validateWithAI(result: boolean): Promise<{ txId: string }>
   if (!APP_ID) throw new Error('Missing TRUSTAI_APP_ID')
 
   const params = await getParams()
-  const appArgs: Uint8Array[] = [
-    selector('validate_with_ai(bool)'),
-    new Uint8Array([result ? 1 : 0]),
-  ]
+  const abi = getAbiContract()
+  const method = abi.getMethodByName('validate_with_ai')
 
-  const txn = algosdk.makeApplicationNoOpTxnFromObject({
-    from: clientAccount.addr,
-    appIndex: APP_ID,
+  const signer = algosdk.makeBasicAccountTransactionSigner(clientAccount)
+  const atc = new algosdk.AtomicTransactionComposer()
+
+  atc.addMethodCall({
+    appID: APP_ID,
+    method,
+    methodArgs: [result],
+    sender: clientAccount.addr,
     suggestedParams: params,
-    appArgs,
+    signer,
   })
 
-  const signed = txn.signTxn(clientAccount.sk)
-  const { txId } = await algodClient.sendRawTransaction(signed).do()
-  await algosdk.waitForConfirmation(algodClient, txId, 4)
-  return { txId }
+  const res = await atc.execute(algodClient, 4)
+  return { txId: res.txIDs[0] }
 }
 
 export async function releasePayment(): Promise<{ txId: string }> {
@@ -77,17 +78,21 @@ export async function releasePayment(): Promise<{ txId: string }> {
   if (!APP_ID) throw new Error('Missing TRUSTAI_APP_ID')
 
   const params = await getParams()
-  const appArgs: Uint8Array[] = [ selector('release_payment()') ]
+  const abi = getAbiContract()
+  const method = abi.getMethodByName('release_payment')
 
-  const txn = algosdk.makeApplicationNoOpTxnFromObject({
-    from: clientAccount.addr,
-    appIndex: APP_ID,
+  const signer = algosdk.makeBasicAccountTransactionSigner(clientAccount)
+  const atc = new algosdk.AtomicTransactionComposer()
+
+  atc.addMethodCall({
+    appID: APP_ID,
+    method,
+    methodArgs: [],
+    sender: clientAccount.addr,
     suggestedParams: params,
-    appArgs,
+    signer,
   })
 
-  const signed = txn.signTxn(clientAccount.sk)
-  const { txId } = await algodClient.sendRawTransaction(signed).do()
-  await algosdk.waitForConfirmation(algodClient, txId, 4)
-  return { txId }
+  const res = await atc.execute(algodClient, 4)
+  return { txId: res.txIDs[0] }
 }

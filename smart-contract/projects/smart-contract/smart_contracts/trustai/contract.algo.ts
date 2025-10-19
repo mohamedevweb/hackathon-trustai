@@ -15,7 +15,7 @@ export class TrustAI extends Contract {
     this.validated.value = false
     return "Contract funded 💰"
   }
-
+  
   @arc4.abimethod()
   validate_with_ai(ai_result: boolean) {
     this.validated.value = ai_result

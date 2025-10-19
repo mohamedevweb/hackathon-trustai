@@ -11,13 +11,20 @@ const links = ref([
     color: 'neutral',
     trailingIcon: 'i-lucide-arrow-right'
   }
+  ,
+  {
+    label: 'Release Payment',
+    to: '/release',
+    color: 'primary',
+    trailingIcon: 'i-lucide-arrow-right'
+  }
 ])
 </script>
 
 <template>
   <UPageHero
       title="Trust AI"
-      description="Autonomous Smart Contract Payments"
+      description="Smartest Escrow System"
       :links="links"
   />
 

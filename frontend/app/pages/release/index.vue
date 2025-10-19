@@ -4,16 +4,12 @@ import type { FormSubmitEvent } from '@nuxt/ui'
 
 const schema = z.object({
   contractId: z.string('Contract ID is required'),
-  githubUrl: z.string('GitHub URL is required'),
-  freelancer: z.string('Freelancer is required'),
 })
 
 type Schema = z.output<typeof schema>
 
 const state = reactive<Partial<Schema>>({
   contractId: undefined,
-  githubUrl: undefined,
-  freelancer: undefined,
 })
 
 const toast = useToast()
@@ -23,17 +19,15 @@ const { apiBase } = useRuntimeConfig().public
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   loading.value = true
   try {
-    const res = await $fetch<{ success: boolean; validated: boolean; aiScore: number; txId: string }>(`${apiBase}/submit`, {
+    const res = await $fetch<{ success: boolean; txId: string }>(`${apiBase}/release`, {
       method: 'POST',
       body: {
         contractId: Number(event.data.contractId),
-        githubUrl: event.data.githubUrl,
-        freelancer: event.data.freelancer,
       },
     })
-    toast.add({ title: res.validated ? 'Validated' : 'Rejected', description: `aiScore=${res.aiScore}\ntxId=${res.txId}`, color: res.validated ? 'success' : 'warning' })
+    toast.add({ title: 'Released', description: `txId=${res.txId}`, color: 'success' })
   } catch (e: any) {
-    toast.add({ title: 'Error', description: e?.data?.error || e?.message || 'Submit failed', color: 'error' })
+    toast.add({ title: 'Error', description: e?.data?.error || e?.message || 'Release failed', color: 'error' })
   } finally {
     loading.value = false
   }
@@ -49,17 +43,14 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
             <UFormField label="Contract ID" name="contractId">
             <UInput v-model="state.contractId" />
-            </UFormField>   
-
-            <UFormField label="Github URL" name="githubUrl">
-            <UInput v-model="state.githubUrl" type="text" />
-            </UFormField>   
+            </UFormField>
 
             <UButton type="submit" :loading="loading">
-              Submit Delivery
+              Release Payment
             </UButton>
         </UForm>
     </UPageCard>
   </div>
 </template>
+
 
